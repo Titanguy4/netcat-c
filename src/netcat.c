@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "../include/server.h"
+#include "../include/client.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,8 +20,8 @@ int main(int argc, char *argv[])
     {
         char *ip = argv[1];
         int port = atoi(argv[2]);
-        // run_client(ip, port); // À implémenter dans client.c
         printf("[MODE CLIENT] IP: %s, Port: %d\n", ip, port);
+        run_client(ip, port);
     }
     else
     {

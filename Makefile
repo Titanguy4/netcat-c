@@ -1,13 +1,18 @@
-TARGET = exec
+TARGET = netcatc
 SRCS = src/netcat.c src/server.c src/client.c src/utils.c
 CC = gcc
-GFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
+INCLUDES = -Iinclude
 
 $(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) $(SRCS)
 
 clean:
-	rm $(TARGET)
+	rm -f $(TARGET)
 
-run:
+re: clean $(TARGET)
+
+run: $(TARGET)
 	./$(TARGET)
+
+.PHONY: clean run re

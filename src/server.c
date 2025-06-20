@@ -12,20 +12,18 @@ void run_server(int port)
     int server_fd, client_fd;
     struct sockaddr_in addr;
 
-    server_fd = create_server_socket();
+    server_fd = create_server_tcp_socket();
     init_server_addr(&addr, port);
     bind_server(server_fd, &addr);
     listen_server(server_fd);
 
     client_fd = accept_client(server_fd, &addr);
 
-    
-
     close(client_fd);
     close(server_fd);
 }
 
-int create_server_socket()
+int create_server_tcp_socket()
 {
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0)
